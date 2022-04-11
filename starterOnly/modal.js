@@ -157,7 +157,11 @@ btnSubmit.addEventListener("click", function(event) {
     return false;
   }
   else {
-    
+    event.preventDefault();
+    document.getElementsByClassName('modal-body')[0].style.display = 'none' ;
+    document.getElementsByClassName('modal-congrats')[0].style.display = 'flex' ;
+    modalCloseBtn.style.display = 'none';
+    setTimeout(function(){ document.getElementById("inscription").submit() }, 5000);
   }
 });
   
