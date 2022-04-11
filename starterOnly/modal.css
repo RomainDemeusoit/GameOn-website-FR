@@ -532,3 +532,46 @@ footer {
   }
 }
 
+/* Mon code */
+
+#firstError {
+  color: red;
+  font-size: 0.8rem;
+  display: none;
+}
+
+#lastError {
+  color: red;
+  font-size: 0.8rem;
+  display: none;
+}
+
+#mailError {
+  color: red;
+  font-size: 0.8rem;
+  display: none;
+}
+
+#birthError {
+  color: red;
+  font-size: 0.8rem;
+  display: none;
+}
+
+#tournamentNumberError {
+  color: red;
+  font-size: 0.8rem;
+  display: none;
+}
+
+#tournamentOptionsError {
+  color: red;
+  font-size: 0.8rem;
+  display: none;
+}
+
+#termsError {
+  color: red;
+  font-size: 0.8rem;
+  display: none;
+}
