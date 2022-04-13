@@ -1,9 +1,9 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += "responsive";
+  var navBar = document.getElementById("myTopnav");
+  if (navBar.className === "topnav") {
+    navBar.className += "responsive";
   } else {
-    x.className = "topnav";
+    navBar.className = "topnav";
   }
 }
 
@@ -49,13 +49,24 @@ function termsChecked() {
 
 
 // Verififier que le prénom est correcte, sinon message d'erreur
+// function firstChecked() {
+//   if (/^[a-z ,.'-]+$/i.test(inputs[0].value) && inputs[0].value.length >= 2) {
+//     document.getElementById('firstError').style.display = "none";
+//     inputs[0].style.border = "0";
+//   } else {
+//     document.getElementById('firstError').style.display = "block";
+//     inputs[0].style.border = "solid 2px red";
+//     erreur = "Veuillez renseigner tous les champs correctement";
+//   }
+// }
+
 function firstChecked() {
   if (/^[a-z ,.'-]+$/i.test(inputs[0].value) && inputs[0].value.length >= 2) {
-    document.getElementById('firstError').style.display = "none";
-    inputs[0].style.border = "0";
+    formData[0].setAttribute('data-error-visible',"false");
+  
   } else {
-    document.getElementById('firstError').style.display = "block";
-    inputs[0].style.border = "solid 2px red";
+    formData[0].setAttribute('data-error','Veuillez entrer 2 caractères minimum et seulement des lettres pour le champ du prénom.');
+    formData[0].setAttribute('data-error-visible',"true");
     erreur = "Veuillez renseigner tous les champs correctement";
   }
 }
