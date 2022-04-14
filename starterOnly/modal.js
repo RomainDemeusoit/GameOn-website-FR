@@ -1,5 +1,6 @@
+// Change la classe de la barre de navigation et ouvre le menu de navigation OU le ferme
 function editNav() {
-  var navBar = document.getElementById("myTopnav");
+  let navBar = document.getElementById("myTopnav");
   if (navBar.className === "topnav") {
     navBar.className += "responsive";
   } else {
@@ -19,51 +20,13 @@ function formNoEmpty() {
 }
 
 
-// Verifier que une des destination est cochée
-function destinationChecked() {
-  for (let i = 0; i < 5; i++) {
-    if(checkboxs[i].checked){
-      document.getElementById('tournamentOptionsError').style.display = "none";
-      return ;
-    }
-  }
-  erreur = "Veuillez renseigner tous les champs";
-  document.getElementById('tournamentOptionsError').style.display = "block";
-}
-
-
-// Verifier que les conditions générales sont cochées
-function termsChecked() {
-  if (checkboxs[6].checked) {
-    document.getElementById('termsError').style.display = "none";
-    return true;
-  } else {
-    erreur = "Veuillez renseigner tous les champs";
-    document.getElementById('termsError').style.display = "block";
-  }
-}
-
-
-
 
 
 
 // Verififier que le prénom est correcte, sinon message d'erreur
-// function firstChecked() {
-//   if (/^[a-z ,.'-]+$/i.test(inputs[0].value) && inputs[0].value.length >= 2) {
-//     document.getElementById('firstError').style.display = "none";
-//     inputs[0].style.border = "0";
-//   } else {
-//     document.getElementById('firstError').style.display = "block";
-//     inputs[0].style.border = "solid 2px red";
-//     erreur = "Veuillez renseigner tous les champs correctement";
-//   }
-// }
-
 function firstChecked() {
   if (/^[a-z ,.'-]+$/i.test(inputs[0].value) && inputs[0].value.length >= 2) {
     formData[0].setAttribute('data-error-visible',"false");
-  
   } else {
     formData[0].setAttribute('data-error','Veuillez entrer 2 caractères minimum et seulement des lettres pour le champ du prénom.');
     formData[0].setAttribute('data-error-visible',"true");
@@ -71,47 +34,77 @@ function firstChecked() {
   }
 }
 
+// Verififier que le nom est correcte, sinon message d'erreur
 function lastChecked() {
   if (/^[a-z ,.'-]+$/i.test(inputs[1].value) && inputs[1].value.length >= 2) {
-    document.getElementById('lastError').style.display = "none";
-    inputs[1].style.border = "0";
+    formData[1].setAttribute('data-error-visible',"false");
   } else {
-    document.getElementById('lastError').style.display = "block";
-    inputs[1].style.border = "solid 2px red";
+    formData[1].setAttribute('data-error','Veuillez entrer 2 caractères minimum et seulement des lettres pour le champ du nom.');
+    formData[1].setAttribute('data-error-visible',"true");
     erreur = "Veuillez renseigner tous les champs correctement";
   }
 }
 
+
+// Verifier que l'adresse mail est correcte
 function mailChecked() {
   if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(inputs[2].value)) {
-    document.getElementById('mailError').style.display = "none";
-    inputs[2].style.border = "0";
+    formData[2].setAttribute('data-error-visible',"false");
   } else {
-    document.getElementById('mailError').style.display = "block";
-    inputs[2].style.border = "solid 2px red";
+    formData[2].setAttribute('data-error','Veuillez entrer une adresse E-mail valide.');
+    formData[2].setAttribute('data-error-visible',"true");
     erreur = "Veuillez renseigner tous les champs correctement";
   }
 }
 
+
+// Verifier que la date est valide
 function dateChecked() {
   if (/^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/.test(inputs[3].value)) {
-    document.getElementById('birthError').style.display = "none";
-    inputs[3].style.border = "0";
+    formData[3].setAttribute('data-error-visible',"false");
   } else {
-    document.getElementById('birthError').style.display = "block";
-    inputs[3].style.border = "solid 2px red";
+    formData[3].setAttribute('data-error','Vous devez entrer une date de naissance valide.');
+    formData[3].setAttribute('data-error-visible',"true");
     erreur = "Veuillez renseigner tous les champs correctement";
   }
 }
 
+
+// Verifier que le nombre de tournois est correcte
 function tournamentsChecked() {
   if (inputs[4].value) {
-    document.getElementById('tournamentNumberError').style.display = "none";
-    inputs[4].style.border = "0";
+    formData[4].setAttribute('data-error-visible',"false");
   } else {
-    document.getElementById('tournamentNumberError').style.display = "block";
-    inputs[4].style.border = "solid 2px red";
+    formData[4].setAttribute('data-error','Vous devez entrer le nombre de tournois que vous avez effectué.');
+    formData[4].setAttribute('data-error-visible',"true");
     erreur = "Veuillez renseigner tous les champs correctement";
+  }
+}
+
+
+// Verifier que une des destination est cochée
+function destinationChecked() {
+  for (let i = 0; i < 5; i++) {
+    if(checkboxs[i].checked){
+      formData[5].setAttribute('data-error-visible',"false");
+      return ;
+    }
+  }
+  erreur = "Veuillez renseigner tous les champs";
+  formData[5].setAttribute('data-error','Vous devez choisir une option.');
+  formData[5].setAttribute('data-error-visible',"true");
+}
+
+
+// Verifier que les conditions générales sont cochées
+function termsChecked() {
+  if (checkboxs[6].checked) {
+    formData[6].setAttribute('data-error-visible',"false");
+    return true;
+  } else {
+    erreur = "Veuillez renseigner tous les champs";
+    formData[6].setAttribute('data-error','Vous devez acceptez les termes et conditions.');
+    formData[6].setAttribute('data-error-visible',"true");
   }
 }
 
@@ -148,7 +141,9 @@ modalCloseBtn.addEventListener("click", () => {
   modalbg.style.display = "none";
 })
 
-// Toutes les fonctions de vérifications sont effectuées si on clique sur le bouton submit
+// Toutes les fonctions de vérifications sont effectuées quand on clique sur le bouton submit
+// Si la variable erreur contient quelque chose (les informations ne sont pas correctes), alors les données ne sont pas envoyées et un message d'erreur s'affiche
+// Si la variable erreur est vide (les informations sont correctes), alors le formulaire est caché et un message de confirmation apparait pendant 5 secondes avant que les données soient envoyées
 btnSubmit.addEventListener("click", function(event) {
   formNoEmpty();
   destinationChecked();

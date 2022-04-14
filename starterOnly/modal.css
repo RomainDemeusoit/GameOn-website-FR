@@ -342,11 +342,6 @@ input[data-error]::after {
   border: 0;
 }
 
-#erreur {
-  text-align: center;
-  color: red;
-}
-
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -545,46 +540,10 @@ footer {
 
 /* Mon code */
 
-#firstError {
+#erreur {
+  text-align: center;
   color: red;
-  font-size: 0.8rem;
-  display: none;
-}
-
-#lastError {
-  color: red;
-  font-size: 0.8rem;
-  display: none;
-}
-
-#mailError {
-  color: red;
-  font-size: 0.8rem;
-  display: none;
-}
-
-#birthError {
-  color: red;
-  font-size: 0.8rem;
-  display: none;
-}
-
-#tournamentNumberError {
-  color: red;
-  font-size: 0.8rem;
-  display: none;
-}
-
-#tournamentOptionsError {
-  color: red;
-  font-size: 0.8rem;
-  display: none;
-}
-
-#termsError {
-  color: red;
-  font-size: 0.8rem;
-  display: none;
+  font-size: 1rem;
 }
 
 .modal-congrats {
