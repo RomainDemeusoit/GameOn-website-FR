@@ -60,10 +60,11 @@ function mailChecked() {
 
 // Verifier que la date est valide
 function dateChecked() {
-  if (/^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/.test(inputs[3].value)) {
+  getYearsOld();
+  if (/^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/.test(inputs[3].value) && yearsOld >= 10 && yearsOld <= 100) {
     formData[3].setAttribute('data-error-visible',"false");
   } else {
-    formData[3].setAttribute('data-error','Vous devez entrer une date de naissance valide.');
+    formData[3].setAttribute('data-error','Vous devez entrer une date de naissance valide et avoir 10 ans minimum.');
     formData[3].setAttribute('data-error-visible',"true");
     erreur = "Veuillez renseigner tous les champs correctement";
   }
@@ -128,6 +129,22 @@ const inputs = document.getElementsByTagName("input");
 const btnSubmit = document.getElementsByClassName("btn-submit")[0];
 let erreur;
 
+let yearsOld;
+
+
+
+
+function getYearsOld () {
+  let now = new Date();
+  let actualYear = now.getFullYear();
+  let birthDateYear = inputs[3].value;
+  birthDateYear = new Date(birthDateYear);
+  birthDateYear = birthDateYear.getFullYear();
+  yearsOld = actualYear-birthDateYear;
+}
+
+
+
 // Tous les boutons "modal-btn" ouvrent la modal au click
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -154,6 +171,7 @@ btnSubmit.addEventListener("click", function(event) {
   tournamentsChecked();
   destinationChecked();
   termsChecked();
+
   
   if (erreur) {
     event.preventDefault();
@@ -166,27 +184,8 @@ btnSubmit.addEventListener("click", function(event) {
     event.preventDefault();
     document.getElementsByClassName('modal-body')[0].style.display = 'none' ;
     document.getElementsByClassName('modal-congrats')[0].style.display = 'flex' ;
-    modalCloseBtn.style.display = 'none';
     setTimeout(function(){ document.getElementById("inscription").submit() }, 5000);
   }
 });
-  
-    
-    
-
-    
-
-  // let first = document.getElementById("first");
-  // let last = document.getElementById("last");
-  // let email = document.getElementById("email");
-  // let birthdate = document.getElementById("birthdate");
-  // let quantity = document.getElementById("quantity");
-
-  // if (!first.value) {
-  //   erreur = "Veuillez renseigner un prénom";
-  // }
-
-
-  // alert("Formulaire envoyé");
 
 
