@@ -1,4 +1,4 @@
-// Change la classe de la barre de navigation et ouvre le menu de navigation OU le ferme
+// Change la classe de la barre de navigation et ouvre le menu de navigation OU le ferme (au clique sur le bouton)
 function editNav() {
   let navBar = document.getElementById("myTopnav");
   if (navBar.className === "topnav") {
@@ -146,14 +146,14 @@ modalCloseBtn.addEventListener("click", () => {
 // Si la variable erreur est vide (les informations sont correctes), alors le formulaire est caché et un message de confirmation apparait pendant 5 secondes avant que les données soient envoyées
 btnSubmit.addEventListener("click", function(event) {
   formNoEmpty();
-  destinationChecked();
-  termsChecked();
 
   firstChecked();
   lastChecked();
   mailChecked();
   dateChecked();
   tournamentsChecked();
+  destinationChecked();
+  termsChecked();
   
   if (erreur) {
     event.preventDefault();
